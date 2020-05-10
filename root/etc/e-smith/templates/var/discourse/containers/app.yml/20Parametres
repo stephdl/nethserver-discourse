@@ -1,0 +1,13 @@
+
+params:
+  db_default_text_search_config: "pg_catalog.english"
+
+  ## Set db_shared_buffers to a max of 25% of the total memory.
+  ## will be set automatically by bootstrap based on detected RAM, or you can override
+  db_shared_buffers: "128MB"
+
+  ## can improve sorting performance, but adds memory usage per-connection
+  #db_work_mem: "40MB"
+
+  ## Which Git revision should this container use? (default: tests-passed)
+  version: stable

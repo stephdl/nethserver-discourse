@@ -1,0 +1,16 @@
+## this is the all-in-one, standalone Discourse Docker container template
+##
+## After making changes to this file, you MUST rebuild
+## /var/discourse/launcher rebuild app
+##
+## BE *VERY* CAREFUL WHEN EDITING!
+## YAML FILES ARE SUPER SUPER SENSITIVE TO MISTAKES IN WHITESPACE OR ALIGNMENT!
+## visit http://www.yamllint.com/ to validate this file as needed
+
+templates:
+  - "templates/postgres.template.yml"
+  - "templates/redis.template.yml"
+  - "templates/web.template.yml"
+  - "templates/web.ratelimited.template.yml"
+# we use a linux socket at /var/discourse/shared/standalone/nginx.http.sock
+  - "templates/web.socketed.template.yml"

@@ -1,0 +1,7 @@
+
+#
+# Docker command can be given here (network, IP,...)
+#
+
+docker_args:
+  - '--network aqua'
