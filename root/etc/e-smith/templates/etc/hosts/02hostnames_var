@@ -1,0 +1,9 @@
+{
+    #
+    # push discourse hostname
+    #
+
+    push @hostnames, $discourse{'domain'};
+
+    '';
+}
