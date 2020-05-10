@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+if [[ ! -d /var/discourse ]]; then
+    /usr/bin/git  clone https://github.com/discourse/discourse_docker.git /var/discourse
+    /usr/bin/systemctl enable docker 
+    /usr/bin/systemctl start docker 
+fi
