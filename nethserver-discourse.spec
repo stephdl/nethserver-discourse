@@ -9,7 +9,8 @@ License: GPL
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
-Requires: git container-selinux containerd.io docker-ce docker-ce-cli
+Requires: git 
+Requires: nethserver-docker
 BuildRequires: nethserver-devtools
 BuildArch: noarch
 
