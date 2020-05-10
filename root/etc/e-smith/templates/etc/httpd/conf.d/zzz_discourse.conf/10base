@@ -1,0 +1,39 @@
+{
+
+if (($discourse{'status'} || 'disabled') eq 'enabled'){
+    my $allow = (($discourse{'access'} || 'private') eq 'public') ? 'all granted':"ip $localAccess";
+    my $cert = $pki{'CrtFile'} || '/etc/pki/tls/certs/NSRV.crt';
+    my $key = $pki{'KeyFile'} || '/etc/pki/tls/private/NSRV.key';
+    my $domain = $discourse{'domain'};
+    
+    $OUT .=<<"EOF";
+
+<VirtualHost *:80>
+    ServerName $domain
+    Redirect permanent / https://$domain/
+</VirtualHost>
+
+<VirtualHost *:443>
+ServerName  $domain
+SSLEngine on
+SSLCertificateFile "$cert"
+SSLCertificateKeyFile "$key"
+RewriteEngine On
+ProxyPreserveHost On
+ProxyRequests Off
+ProxyPass / unix:/var/discourse/shared/standalone/nginx.http.sock|http://localhost/
+ProxyPassReverse  / unix:/var/discourse/shared/standalone/nginx.http.sock|http://localhost/
+
+</VirtualHost>
+EOF
+} else {
+    $OUT .=<<'EOF';
+
+# discourse is disabled
+# You can enable it with
+# db configuration setprop discourse status enabled
+# signal-event nethserver-discourse-save
+
+EOF
+}
+}
