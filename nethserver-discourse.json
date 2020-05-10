@@ -1,0 +1,26 @@
+{
+  "id": "nethserver-discourse",
+  "name": "discourse",
+  "summary": "Provide the Forum discourse",
+  "description": "Provide the Forum discourse",
+  "url": "",
+  "homepage": "https://github.com/stephdl/nethserver-discourse",
+  "provides": ["nethserver-discourse"],
+  "release": {
+    "version": "_RELEASE_"
+  },
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/stephdl/dev/issues"
+  },
+  "author": {
+    "name": "Stephane de Labrusse",
+    "url": "https://github.com/stephdl/nethserver-discourse",
+    "email": "stephdl@de-labrusse.fr"
+  },
+  "infoapi": {
+    "path": "nethserver-discourse/read"
+  },
+  "icon": "logo.png",
+  "external": true
+} 
