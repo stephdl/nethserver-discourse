@@ -1,0 +1,39 @@
+#!/usr/bin/perl -w
+
+use esmith::Build::CreateLinks qw(:all);
+
+#--------------------------------------------------
+## example of what is a createlinks
+##--------------------------------------------------
+
+
+#mandatory to create db after installation
+my $event = 'nethserver-discourse-update';
+event_actions ( $event, 'initialize-default-databases' => '00');
+
+event_actions($event, qw(
+            nethserver-discourse-Init 10
+));
+
+
+$event = 'nethserver-discourse-save';
+#expand templates following one event
+event_templates($event, qw(
+                /etc/httpd/conf.d/zzz_discourse.conf
+                /etc/hosts
+                /var/discourse/containers/app.yml
+));
+#restart services following one event
+event_services($event, qw(
+               httpd restart
+));
+
+# trusted-network event
+$event = 'trusted-networks-modify';
+event_templates($event, qw(
+    /etc/httpd/conf.d/zzz_discourse.conf
+));
+
+event_services($event, qw(
+    httpd reload
+));
