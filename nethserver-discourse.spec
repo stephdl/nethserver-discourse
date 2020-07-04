@@ -1,7 +1,7 @@
 Summary: nethserver-discourse  is a skeleton for a new module
 %define name nethserver-discourse
 Name: %{name}
-%define version 0.0.1
+%define version 0.0.2
 %define release 1
 Version: %{version}
 Release: %{release}%{?dist}
@@ -43,6 +43,8 @@ rm -f %{name}-%{version}-%{release}-filelist
 
 %post
 %postun
+/usr/bin/rm -f /etc/httpd/conf.d/zzz_discourse.conf
+/usr/bin/systemctl reload httpd
 
 %clean 
 rm -rf $RPM_BUILD_ROOT
@@ -53,5 +55,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc COPYING
 
 %changelog
+* Sat Jul 04 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.2
+- Remove http templates after rpm removal
+
 * Tue May 09 2017 stephane de Labrusse <stephdl@de-labrusse.fr>
 - initial
