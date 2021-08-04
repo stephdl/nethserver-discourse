@@ -21,6 +21,10 @@ SSLCertificateKeyFile "$key"
 RewriteEngine On
 ProxyPreserveHost On
 ProxyRequests Off
+# When discourse itself force the ssl we cannot login anymore
+RequestHeader set X-Forwarded-Proto "https"
+RequestHeader set X-Forwarded-Port "443"
+AllowEncodedSlashes NoDecode
 ProxyPass / unix:/var/discourse/shared/standalone/nginx.http.sock|http://localhost/
 ProxyPassReverse  / unix:/var/discourse/shared/standalone/nginx.http.sock|http://localhost/
 
