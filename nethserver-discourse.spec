@@ -1,7 +1,7 @@
 Summary: nethserver-discourse  is a skeleton for a new module
 %define name nethserver-discourse
 Name: %{name}
-%define version 0.0.2
+%define version 0.0.3
 %define release 2
 Version: %{version}
 Release: %{release}%{?dist}
@@ -58,6 +58,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc COPYING
 
 %changelog
+* Wed Aug 04 2021 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.3
+- Set the RequestHeader needed when discourse forces the https
+- https://community.nethserver.org/t/nethserver-discourse-lets-encrypt-and-ssl/18591/10
+- Thank michel andré
+
 * Sat Jul 04 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.2
 - Remove http templates after rpm removal
 
